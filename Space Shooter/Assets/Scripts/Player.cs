@@ -18,10 +18,24 @@ public class Player : MonoBehaviour
     {
         float _horizontalInput = Input.GetAxis("Horizontal");
         float _verticalInput = Input.GetAxis("Vertical");
-       
-        transform.Translate(Vector3.right *_horizontalInput * _speed * Time.deltaTime);
-        transform.Translate(Vector3.up * _verticalInput * _speed * Time.deltaTime);
 
+        transform.Translate(new Vector3(_horizontalInput, _verticalInput, 0) * _speed * Time.deltaTime);
         
+        if(transform.position.x > 11f)
+        {
+            transform.position = new Vector3(-11f,transform.position.y,0);
+        }
+        else if (transform.position.x < -11f)
+        {
+            transform.position = new Vector3(11f, transform.position.y, 0);
+        }
+        else if(transform.position.y > 7.6f)
+        {
+            transform.position = new Vector3(transform.position.x, -5.5f, 0);
+        }
+        else if(transform.position.y < -5.5f)
+        {
+            transform.position = new Vector3(transform.position.x, 7.6f, 0);
+        }
     }
 }
