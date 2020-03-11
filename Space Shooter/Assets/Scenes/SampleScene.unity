@@ -153,6 +153,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _speed: 4
+  _LaserPrefab: {fileID: 7871137222627004458, guid: 4e79156c7a14bcc40a5fc491cf8262c7,
+    type: 3}
 --- !u!65 &292634550
 BoxCollider:
   m_ObjectHideFlags: 0
