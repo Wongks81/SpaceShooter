@@ -10,6 +10,8 @@ public class Player : MonoBehaviour
     private float _fireRate = 0.3f;
     [SerializeField]
     private float _canFire = 0f;
+    [SerializeField]
+    private int _playerLife = 3;
 
     [SerializeField]
     private GameObject _LaserPrefab = null;
@@ -57,5 +59,13 @@ public class Player : MonoBehaviour
         }
     }
 
-    
+    public void damagePlayer()
+    {
+        _playerLife--;
+
+        if(_playerLife <= 0)
+        {
+            Destroy(this.gameObject);
+        }
+    }
 }
