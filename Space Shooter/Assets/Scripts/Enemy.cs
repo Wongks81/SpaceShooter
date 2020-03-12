@@ -5,6 +5,7 @@ using UnityEngine;
 public class Enemy : MonoBehaviour
 {
     private float _speed = 4.0f;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -24,7 +25,7 @@ public class Enemy : MonoBehaviour
     private void OnTriggerEnter(Collider other)
     {
         
-        if(other.transform.tag == "Player")
+        if(other.tag == "Player")
         {
 
             //other = input gameobject
@@ -39,7 +40,7 @@ public class Enemy : MonoBehaviour
             }
             Destroy(this.gameObject);
         }
-        else if (other.transform.tag == "Laser")
+        if (other.transform.tag == "Laser")
         {
             Destroy(other.gameObject);  //destroy laser
             Destroy(this.gameObject); 
