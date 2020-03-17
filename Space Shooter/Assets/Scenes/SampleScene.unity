@@ -157,6 +157,9 @@ MonoBehaviour:
   _playerLife: 3
   _LaserPrefab: {fileID: 2461974133969095818, guid: 4e79156c7a14bcc40a5fc491cf8262c7,
     type: 3}
+  _TriplePrefab: {fileID: 1932061478789343934, guid: 65809e2f444c28044900c6a754dde6d4,
+    type: 3}
+  _triplePU: 0
 --- !u!212 &146662928
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -575,6 +578,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _enemyPrefab: {fileID: 2419820280584292983, guid: c7b5b19b7f36a1e4fbff1e836feeb48d,
+    type: 3}
+  _tripleshotpowerUpPrefab: {fileID: 320955174319991958, guid: b488a4ab3d91e7147961bd01ecfe0d4d,
     type: 3}
   _enemyContainer: {fileID: 1265757747}
   _maxEnemies: 0
