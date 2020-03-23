@@ -40,7 +40,7 @@ public class Enemy : MonoBehaviour
             }
             Destroy(this.gameObject);
         }
-        if (other.transform.tag == "Laser")
+        if (other.tag == "Laser")
         {
             Destroy(other.gameObject);  //destroy laser
             Destroy(this.gameObject); 
