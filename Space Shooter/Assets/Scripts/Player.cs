@@ -15,26 +15,19 @@ public class Player : MonoBehaviour
 
     [SerializeField]
     private GameObject _LaserPrefab = null;
-    [SerializeField]
-    private GameObject _TriplePrefab = null;
 
     private SpawnManager _spawnManager;
-
-    [SerializeField]
-    private bool _triplePU = false;
     
 
     // Start is called before the first frame update
     void Start()
     {
-        transform.position = new Vector3(0, -2, 0);
+        transform.position = new Vector3(0, 0, 0);
         _spawnManager = GameObject.Find("Spawn_Manager").GetComponent<SpawnManager>();
         if(_spawnManager == null)
         {
             Debug.LogError("Spawn Manager is null");
         }
-
-       
     }
 
     // Update is called once per frame
@@ -44,19 +37,8 @@ public class Player : MonoBehaviour
 
         if (Input.GetKeyDown(KeyCode.Space) && Time.time > _canFire)
         {
-            FireLaser();
-        }
-    }
-    void FireLaser()
-    {
-        _canFire = Time.time + _fireRate;
-        if(_triplePU == true)
-        {
-            Instantiate(_TriplePrefab, new Vector3(transform.position.x, transform.position.y , 0), Quaternion.identity);
-        }
-        else 
-        {
-            Instantiate(_LaserPrefab, new Vector3(transform.position.x, transform.position.y + 0.8f, 0), Quaternion.identity);
+            _canFire = Time.time + _fireRate;
+            Instantiate(_LaserPrefab, new Vector3(transform.position.x,transform.position.y + 0.8f,0), Quaternion.identity);
         }
     }
 
@@ -96,22 +78,5 @@ public class Player : MonoBehaviour
             _spawnManager.PlayerDeath();
             Destroy(this.gameObject);
         }
-    }
-    
-    public void enablePowerUp(string name)
-    {
-        if(name == "TripleShot")
-        {
-            _triplePU = true;
-            //Starts powerup coroutine
-            StartCoroutine(PowerUpTimming());
-        }
-        
-    }
-    IEnumerator PowerUpTimming()
-    {
-        yield return new WaitForSeconds(5.0f);
-        _triplePU = false;
-       
     }
 }
