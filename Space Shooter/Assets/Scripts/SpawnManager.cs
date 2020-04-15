@@ -10,6 +10,8 @@ public class SpawnManager : MonoBehaviour
     private GameObject _tripleshotpowerUpPrefab;
     [SerializeField]
     private GameObject _speedpowerUpPrefab;
+    [SerializeField]
+    private GameObject _shieldpowerUpPrefab;
 
     [SerializeField]
     private GameObject _enemyContainer;
@@ -51,16 +53,26 @@ public class SpawnManager : MonoBehaviour
         
         while(_stopSpawning == false )
         {
-            randomID = Random.Range(0, 2);
+            randomID = Random.Range(0, 3);
             Debug.Log("ID " + randomID);
-            if (randomID == 0)
+
+            switch (randomID)
             {
-                Instantiate(_tripleshotpowerUpPrefab, new Vector3(Random.Range(-8f, 8f), 8.0f, 0), Quaternion.identity);
+                case 0:
+                    Instantiate(_tripleshotpowerUpPrefab, new Vector3(Random.Range(-8f, 8f), 8.0f, 0), Quaternion.identity);
+                    break;
+                case 1:
+                    Instantiate(_speedpowerUpPrefab, new Vector3(Random.Range(-8f, 8f), 8.0f, 0), Quaternion.identity);
+                    break;
+                case 2:
+                    Instantiate(_shieldpowerUpPrefab, new Vector3(Random.Range(-8f, 8f), 8.0f, 0), Quaternion.identity);
+                    break;
+                default:
+                    Debug.Log("Random ID not in range");
+                    break;
+
             }
-            else if(randomID == 1)
-            {
-                Instantiate(_speedpowerUpPrefab, new Vector3(Random.Range(-8f, 8f), 8.0f, 0), Quaternion.identity);
-            }
+           
             yield return new WaitForSeconds(Random.Range(3.0f,7.0f));
         }
     }

@@ -5,7 +5,11 @@ using UnityEngine;
 public class Player : MonoBehaviour
 {
     [SerializeField]
-    private float _speed = 4.0f;
+    private float _speed = 4.0f; // speed variable 
+    [SerializeField]
+    private float _speedwithpowerup = 8.0f; // Speed with player collect powerup
+    [SerializeField]
+    private float _initSpeed = 4.0f; // initial speed number
     [SerializeField]
     private float _fireRate = 0.3f;
     [SerializeField]
@@ -22,6 +26,8 @@ public class Player : MonoBehaviour
 
     [SerializeField]
     private bool _triplePU = false;
+    [SerializeField]
+    private bool _shieldPU = false;
     
 
     // Start is called before the first frame update
@@ -87,7 +93,10 @@ public class Player : MonoBehaviour
 
     public void damagePlayer()
     {
-        _playerLife--;
+        if(_shieldPU == false)
+        {
+            _playerLife--;
+        }
 
         if(_playerLife <= 0)
         {
@@ -106,13 +115,15 @@ public class Player : MonoBehaviour
             case 0:
                 _triplePU = true;
                 //Starts powerup coroutine
-                StartCoroutine(PowerUpTimming());
+                StartCoroutine(DefaultLaser());
                 break;
             case 1:
-                _speed = 8.0f;
-                StartCoroutine(increaseSpeed());
+                _speed = _speedwithpowerup;
+                StartCoroutine(DefaultSpeed());
                 break;
             case 2:
+                _shieldPU = true;
+                StartCoroutine(DefaultShield());
                 Debug.Log("Shield Powerup");
                 break;
             default:
@@ -120,16 +131,22 @@ public class Player : MonoBehaviour
                 break;
         }
     }
-    IEnumerator PowerUpTimming()
+    IEnumerator DefaultLaser()
     {
         yield return new WaitForSeconds(5.0f);
         _triplePU = false;
        
     }
 
-    IEnumerator increaseSpeed()
+    IEnumerator DefaultSpeed()
     {
         yield return new WaitForSeconds(5.0f);
-        _speed = 4.0f;
+        _speed = _initSpeed;
+    }
+
+    IEnumerator DefaultShield()
+    {
+        yield return new WaitForSeconds(5.0f);
+        _shieldPU = false;
     }
 }
