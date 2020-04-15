@@ -152,6 +152,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _speed: 4
+  _speedwithpowerup: 8
+  _initSpeed: 4
   _fireRate: 0.3
   _canFire: 0
   _playerLife: 3
@@ -160,6 +162,7 @@ MonoBehaviour:
   _TriplePrefab: {fileID: 1932061478789343934, guid: 65809e2f444c28044900c6a754dde6d4,
     type: 3}
   _triplePU: 0
+  _shieldPU: 0
 --- !u!212 &146662928
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -582,6 +585,8 @@ MonoBehaviour:
   _tripleshotpowerUpPrefab: {fileID: 320955174319991958, guid: b488a4ab3d91e7147961bd01ecfe0d4d,
     type: 3}
   _speedpowerUpPrefab: {fileID: 7811679590591968083, guid: c74bedca419ff6148a383c6bcfdf89d4,
+    type: 3}
+  _shieldpowerUpPrefab: {fileID: 6340050950530722039, guid: e8369fdd669717748a9854981ac77057,
     type: 3}
   _enemyContainer: {fileID: 1265757747}
   _maxEnemies: 0
