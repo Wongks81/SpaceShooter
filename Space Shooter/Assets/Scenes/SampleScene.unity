@@ -581,5 +581,7 @@ MonoBehaviour:
     type: 3}
   _tripleshotpowerUpPrefab: {fileID: 320955174319991958, guid: b488a4ab3d91e7147961bd01ecfe0d4d,
     type: 3}
+  _speedpowerUpPrefab: {fileID: 7811679590591968083, guid: c74bedca419ff6148a383c6bcfdf89d4,
+    type: 3}
   _enemyContainer: {fileID: 1265757747}
   _maxEnemies: 0

@@ -98,20 +98,38 @@ public class Player : MonoBehaviour
         }
     }
     
-    public void enablePowerUp(string name)
+    public void enablePowerUp(int powerupID)
     {
-        if(name == "TripleShot")
+       
+        switch(powerupID)
         {
-            _triplePU = true;
-            //Starts powerup coroutine
-            StartCoroutine(PowerUpTimming());
+            case 0:
+                _triplePU = true;
+                //Starts powerup coroutine
+                StartCoroutine(PowerUpTimming());
+                break;
+            case 1:
+                _speed = 8.0f;
+                StartCoroutine(increaseSpeed());
+                break;
+            case 2:
+                Debug.Log("Shield Powerup");
+                break;
+            default:
+                Debug.Log("Variable Power Up ID Error. Not in Range. powerupID = " + powerupID);
+                break;
         }
-        
     }
     IEnumerator PowerUpTimming()
     {
         yield return new WaitForSeconds(5.0f);
         _triplePU = false;
        
+    }
+
+    IEnumerator increaseSpeed()
+    {
+        yield return new WaitForSeconds(5.0f);
+        _speed = 4.0f;
     }
 }

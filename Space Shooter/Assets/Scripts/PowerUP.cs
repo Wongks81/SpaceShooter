@@ -4,7 +4,12 @@ using UnityEngine;
 
 public class PowerUP : MonoBehaviour
 {
+    [SerializeField]
     private float _speed = 3.0f;
+
+    [SerializeField]
+    private int _powerupID;   // 0=Triple, 1=Speed, 2=Shield
+
     // Start is called before the first frame update
     void Start()
     {
@@ -32,8 +37,9 @@ public class PowerUP : MonoBehaviour
             }
             Destroy(this.gameObject);
 
-            //Pass powerup name, use same function for powerup
-            _player.enablePowerUp("TripleShot");
+            //Pass powerup ID, use same function for powerup
+            _player.enablePowerUp(_powerupID);
+            
         }
     }
    

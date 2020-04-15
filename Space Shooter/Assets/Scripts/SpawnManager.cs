@@ -8,6 +8,8 @@ public class SpawnManager : MonoBehaviour
     private GameObject _enemyPrefab;
     [SerializeField]
     private GameObject _tripleshotpowerUpPrefab;
+    [SerializeField]
+    private GameObject _speedpowerUpPrefab;
 
     [SerializeField]
     private GameObject _enemyContainer;
@@ -45,9 +47,20 @@ public class SpawnManager : MonoBehaviour
 
     IEnumerator SpawnPowerUpRoutine()
     {
+        int randomID;
+        
         while(_stopSpawning == false )
         {
-            Instantiate(_tripleshotpowerUpPrefab, new Vector3(Random.Range(-8f, 8f), 8.0f, 0), Quaternion.identity);
+            randomID = Random.Range(0, 2);
+            Debug.Log("ID " + randomID);
+            if (randomID == 0)
+            {
+                Instantiate(_tripleshotpowerUpPrefab, new Vector3(Random.Range(-8f, 8f), 8.0f, 0), Quaternion.identity);
+            }
+            else if(randomID == 1)
+            {
+                Instantiate(_speedpowerUpPrefab, new Vector3(Random.Range(-8f, 8f), 8.0f, 0), Quaternion.identity);
+            }
             yield return new WaitForSeconds(Random.Range(3.0f,7.0f));
         }
     }
