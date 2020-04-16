@@ -21,6 +21,10 @@ public class Player : MonoBehaviour
     private GameObject _LaserPrefab = null;
     [SerializeField]
     private GameObject _TriplePrefab = null;
+    [SerializeField]
+    private GameObject _PlayerShieldPrefab = null;
+
+    private GameObject _tempShield = null;  //Container to store shield prefab
 
     private SpawnManager _spawnManager;
 
@@ -47,11 +51,17 @@ public class Player : MonoBehaviour
     void Update()
     {
         PlayerMovement();
+        
 
         if (Input.GetKeyDown(KeyCode.Space) && Time.time > _canFire)
         {
             FireLaser();
         }
+        if(_tempShield != null) //Prefab is instantiated
+        {
+            _tempShield.transform.position = transform.position;
+        }
+        
     }
     void FireLaser()
     {
@@ -123,8 +133,8 @@ public class Player : MonoBehaviour
                 break;
             case 2:
                 _shieldPU = true;
+                _tempShield = Instantiate(_PlayerShieldPrefab, transform.position, Quaternion.identity);
                 StartCoroutine(DefaultShield());
-                Debug.Log("Shield Powerup");
                 break;
             default:
                 Debug.Log("Variable Power Up ID Error. Not in Range. powerupID = " + powerupID);
@@ -148,5 +158,12 @@ public class Player : MonoBehaviour
     {
         yield return new WaitForSeconds(5.0f);
         _shieldPU = false;
+        GameObject.Destroy(_tempShield);
+
+        //Remove null error after destroy object
+        if(_tempShield != null)
+        {
+            _tempShield = null;
+        }
     }
 }

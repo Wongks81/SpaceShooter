@@ -161,6 +161,8 @@ MonoBehaviour:
     type: 3}
   _TriplePrefab: {fileID: 1932061478789343934, guid: 65809e2f444c28044900c6a754dde6d4,
     type: 3}
+  _PlayerShieldPrefab: {fileID: 1669429144615671868, guid: e0489d8d333658e43badc05d7549e1b4,
+    type: 3}
   _triplePU: 0
   _shieldPU: 0
 --- !u!212 &146662928
